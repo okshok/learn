@@ -1,4 +1,4 @@
-package ok.joy.learn.thread;
+package ok.performance.thread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ok.joy.learn.param.Range;
+import ok.performance.thread.param.Range;
 
 public class StressJobCompletableFuture implements Callable<CompletableFuture<String>>{
 	

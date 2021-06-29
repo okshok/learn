@@ -1,10 +1,10 @@
-package ok.joy.learn.controller;
+package ok.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ok.joy.learn.thread.StresMaker;
+import ok.performance.thread.StresMaker;
 
 @RestController
 @RequestMapping("/root")
@@ -24,7 +24,7 @@ public class RootConroller {
 	@RequestMapping("/stress2")
 	public String stress2(String stressPoint) {
 		
-		multiThreadStress.makeStressInDivison2(100000);
+		multiThreadStress.makeStressInDivisonAndGetFutureInOtherThread(100000);
 		
 		return "";
 	}

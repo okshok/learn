@@ -1,4 +1,4 @@
-package ok.joy.learn.config;
+package ok.config;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ThreadPoolConfiguration {
 
-	
-	
 	
 	@Bean
 	public ThreadPoolExecutor threadPoolExecutor() {

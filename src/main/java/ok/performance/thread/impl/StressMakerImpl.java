@@ -1,4 +1,4 @@
-package ok.joy.learn.thread.impl;
+package ok.performance.thread.impl;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -12,13 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ok.joy.learn.param.Range;
-import ok.joy.learn.thread.StresMaker;
-import ok.joy.learn.thread.StressJob;
-import ok.joy.learn.thread.StressJobCompletableFuture;
+import ok.performance.thread.StressJob;
+import ok.performance.thread.StressJobCompletableFuture;
+import ok.performance.thread.param.Range;
 
 @Component
-public class StressMakerImpl implements StresMaker{
+public class StressMakerImpl implements ok.performance.thread.StresMaker{
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	@Autowired
@@ -29,7 +28,8 @@ public class StressMakerImpl implements StresMaker{
 	@Override
 	public void makeStressInDivison(int count) {
 	
-		List<StressJob> workList = divideWorkRange(count).stream()
+		List<StressJob> workList = divideWork(count).stream()
+			.parallel()
 			.map(workRange -> {
 				return getWrok(workRange);
 		}).collect(Collectors.toList());
@@ -40,7 +40,6 @@ public class StressMakerImpl implements StresMaker{
 					try {
 						log.debug(future.get());
 					} catch (InterruptedException | ExecutionException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
@@ -53,8 +52,8 @@ public class StressMakerImpl implements StresMaker{
 	}
 
 	@Override
-	public void makeStressInDivison2(int count) {
-		List<StressJobCompletableFuture> workList = divideWorkRange(count).parallelStream()
+	public void makeStressInDivisonAndGetFutureInOtherThread(int count) {
+		List<StressJobCompletableFuture> workList = divideWork(count).parallelStream()
 			.map(workRange -> {
 					return getWrokCompletable(workRange);
 		}).peek(work -> {
@@ -75,17 +74,12 @@ public class StressMakerImpl implements StresMaker{
 			});
 			log.debug("진짜 다 끝났다");
 		});
-//			try {
-//				log.debug(work.newFuture.get());
-//			} catch (InterruptedException | ExecutionException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+
 
 		log.debug("언제 호출 다 마쳐?");
 	}
 	
-	protected List<Range> divideWorkRange(int count) {
+	protected List<Range> divideWork(int count) {
 		int remainder = count % partitionNumber;
 		int quotient = count / partitionNumber;
 		

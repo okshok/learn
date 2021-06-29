@@ -1,4 +1,4 @@
-package ok.joy.learn.compile;
+package ok.compile;
 
 public class StringPool {
 

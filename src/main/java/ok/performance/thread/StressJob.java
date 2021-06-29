@@ -1,4 +1,4 @@
-package ok.joy.learn.thread;
+package ok.performance.thread;
 
 import java.util.concurrent.Callable;
 import java.util.stream.Stream;
@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ok.joy.learn.param.Range;
+import ok.performance.thread.param.Range;
 
 public class StressJob implements Callable<String>{
 	
@@ -22,7 +22,6 @@ public class StressJob implements Callable<String>{
 				tidiousJob(i);
 			}
 		);
-//		newFuture.complete("ok " + range.lower   + " ~ " + range.upper);
 		newFuture = "ok " + range.upper+ " ~ " + range.lower;
 		log.debug(newFuture);
 		return newFuture;

@@ -1,4 +1,4 @@
-package ok.joy.learn.param;
+package ok.performance.thread.param;
 
 public class Range {
 
