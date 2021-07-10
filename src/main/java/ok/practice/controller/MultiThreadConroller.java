@@ -1,14 +1,14 @@
-package ok.controller;
+package ok.practice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ok.performance.thread.StresMaker;
+import ok.practice.performance.thread.StresMaker;
 
 @RestController
-@RequestMapping("/root")
-public class RootConroller {
+@RequestMapping("/thread")
+public class MultiThreadConroller {
 
 	
 	@Autowired
@@ -16,6 +16,7 @@ public class RootConroller {
 	
 	@RequestMapping("/stress")
 	public String stress(String stressPoint) {
+		
 		
 		multiThreadStress.makeStressInDivison(100000);
 		
@@ -25,6 +26,13 @@ public class RootConroller {
 	public String stress2(String stressPoint) {
 		
 		multiThreadStress.makeStressInDivisonAndGetFutureInOtherThread(100000);
+		
+		return "";
+	}
+	@RequestMapping("/stress3")
+	public String stress3(String stressPoint) {
+		
+		multiThreadStress.makeStressWithCompletableFuture(100000);
 		
 		return "";
 	}

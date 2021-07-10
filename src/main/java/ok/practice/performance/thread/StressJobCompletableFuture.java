@@ -1,29 +1,31 @@
-package ok.performance.thread;
+package ok.practice.performance.thread;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ok.performance.thread.param.Range;
+import ok.practice.performance.thread.param.Range;
 
-public class StressJob implements Callable<String>{
+public class StressJobCompletableFuture implements Callable<CompletableFuture<String>>{
 	
 	private final Logger log = LoggerFactory.getLogger(getClass());
-	public String newFuture = null;
+	public CompletableFuture<String> newFuture = new CompletableFuture<>();
 	public Range range = null;
 
 	@Override
-	public String call() throws Exception {
+	public CompletableFuture<String> call() throws Exception {
 		log.debug("start job");
 		Stream.iterate(range.lower, i -> i + 1).limit(range.upper)
 			.forEach(i -> {
 				tidiousJob(i);
 			}
 		);
-		newFuture = "ok " + range.upper+ " ~ " + range.lower;
-		log.debug(newFuture);
+		newFuture.complete("ok " + range.lower   + " ~ " + range.upper);
+		String result= "done this job  " + range.upper+ " ~ " + range.lower;
+		log.debug(result);
 		return newFuture;
 	}
 	

@@ -1,22 +1,28 @@
 package ok.config;
 
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import ok.practice.timer.MyTimer;
 
 @Configuration
 public class ThreadPoolConfiguration {
 
 	
 	@Bean
-	public ThreadPoolExecutor threadPoolExecutor() {
+	public ExecutorService threadPoolExecutor() {
 		System.out.println("비동기 처리 ");
-	LinkedBlockingQueue<Runnable> queue = new LinkedBlockingQueue<>(9);
-		ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 100, 5, TimeUnit.MINUTES, queue);
+		ExecutorService threadPoolExecutor = Executors.newFixedThreadPool(30);
 		
 		return threadPoolExecutor; 
+	}
+	
+	@Bean
+	public MyTimer myTimer() {
+		MyTimer timer = new MyTimer();
+		return timer;
 	}
 }

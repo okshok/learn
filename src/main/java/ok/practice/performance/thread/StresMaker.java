@@ -1,4 +1,4 @@
-package ok.performance.thread;
+package ok.practice.performance.thread;
 
 public interface StresMaker {
 
@@ -6,5 +6,8 @@ public interface StresMaker {
 	
 	public void makeStressInDivisonAndGetFutureInOtherThread(int count);
 
+	public void makeStressWithCompletableFuture(int count);
+	
+	
 	
 }

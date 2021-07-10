@@ -3,8 +3,8 @@ package ok.stream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import ok.lamda.StreamService;
-import ok.lamda.impl.StreamServiceImpl;
+import ok.practice.lamda.StreamService;
+import ok.practice.lamda.impl.StreamServiceImpl;
 
 public class StreamTest {
 
