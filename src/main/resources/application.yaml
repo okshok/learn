@@ -1,1 +1,17 @@
 
+
+spring:
+  datasource:
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.29.173.87:3306/learn
+    username: user 
+    password: ENC(XKrwy4mefxPgl0gfstzP18mFPtxZME0HmdF3Q1/ESHzJdm8xBZutGP/9inIndYOK)
+  jpa:
+    generate-ddl: true 
+    showSql: true
+    hibernate:
+      ddl-auto: create-drop
+    
+jasypt:
+  encryptor:
+    password: mypassword

@@ -1,0 +1,25 @@
+
+
+#  설치
+docker pull mariadb
+docker run --name mariadb -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password mariadb
+
+# 아래 파일 열어서 인코딩 추가
+vi /etc/mysql/my.cnf
+
+[mysqld]
+collation-server = utf8_unicode_ci
+init-connect='SET NAMES utf8'
+character_set_server = utf8
+
+[client]
+default-character-set=utf8
+
+[mysqldump]
+default-character-set = utf8
+
+[mysql]
+default-character-set = utf8
+
+# 재시작
+docker restart mariadb
