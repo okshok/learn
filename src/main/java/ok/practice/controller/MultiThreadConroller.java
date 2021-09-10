@@ -10,7 +10,7 @@ import ok.practice.performance.thread.StresMaker;
 @RequestMapping("/thread")
 public class MultiThreadConroller {
 
-	
+
 	@Autowired
 	StresMaker multiThreadStress;
 	

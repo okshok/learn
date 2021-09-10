@@ -1,4 +1,4 @@
-package ok.practice.cache;
+package ok.common.type;
 
 import lombok.Getter;
 

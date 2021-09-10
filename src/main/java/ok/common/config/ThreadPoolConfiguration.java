@@ -1,4 +1,4 @@
-package ok.config;
+package ok.common.config;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

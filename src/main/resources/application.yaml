@@ -1,16 +1,20 @@
 
 spring:
   datasource:
-    driver-class-name : com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/learn
-    username: user 
-    password: ENC(XKrwy4mefxPgl0gfstzP18mFPtxZME0HmdF3Q1/ESHzJdm8xBZutGP/9inIndYOK)
+    driver-class-name : org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
   jpa:
-    generate-ddl: true 
+    generate-ddl: true
     showSql: true
     hibernate:
       ddl-auto: create-drop
-    
+
+    database-platform : org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
 jasypt:
   encryptor:
     password: mypassword

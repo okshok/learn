@@ -2,6 +2,7 @@ package ok.practice.controller;
 
 import java.util.List;
 
+import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,10 @@ import ok.practice.jpa.TestRepository;
 @RequiredArgsConstructor
 public class TestController {
 
-	
+//	public  TestController(TestRepository testRepository) {
+//		this.testRepository = testRepository;
+//	}
+
 	private final TestRepository testRepository;
 	
 	
@@ -25,9 +29,10 @@ public class TestController {
 	}
 
 	@PostMapping("/test/tests")
-	public void addResult(Test test){
+	public String  addResult(Test test){
 		
 		testRepository.save(test);
+		return "ook";
 	}
 	
 }

@@ -1,10 +1,7 @@
-package ok.config;
+package ok.common.config;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-
+import com.github.benmanes.caffeine.cache.Caffeine;
+import ok.common.type.CaffeineCacheType;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -12,15 +9,17 @@ import org.springframework.cache.caffeine.CaffeineCache;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 
-import com.github.benmanes.caffeine.cache.Caffeine;
-
-import ok.practice.cache.CaffeineCacheType;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Configurable
 @EnableCaching
 public class CaffeineCacheConfig {
 
 	  @Bean
+	  @Deprecated
 	  public CacheManager cacheManager() {
 	    SimpleCacheManager cacheManager = new SimpleCacheManager();
 	    List<CaffeineCache> caches = Arrays.stream(CaffeineCacheType.values())

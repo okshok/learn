@@ -17,7 +17,7 @@ public class MyTimer implements InitializingBean{
 			
 			@Override
 			public void run() {
-				log.debug("time is on");
+//				log.debug("time is on");
 				
 
 			}

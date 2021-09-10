@@ -12,7 +12,7 @@ public class StreamController {
 
 	@Autowired
 	private StreamService streamService;
-	
+
 	@RequestMapping("/calculatePlus")
 	public void calculatePlus() {
 		streamService.calculatePlus();	
